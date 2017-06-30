@@ -81,6 +81,7 @@ private:
     pointer_t allocate(id<Node>) {
         ++m_node_count;
         pointer_t l_ptr = m_node_allocator.allocate(1);
+        bzero(l_ptr, sizeof(Node));
         return new (l_ptr) Node;
     }
 
@@ -88,6 +89,7 @@ private:
     template<typename Data>
     pointer_t allocate(id<Data>) {
         pointer_t l_ptr = m_char_allocator.allocate(sizeof(Data));
+        bzero(l_ptr, sizeof(Data));
         return new (l_ptr) Data;
     }
 
