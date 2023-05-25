@@ -49,6 +49,9 @@ public:
 
     // convert abstract pointer to native pointer
     template<typename T> T *native_pointer(pointer_t a_ptr) const {
+	if (!a_ptr)
+		return (T*)((char *)0);
+
         if (a_ptr > m_size - sizeof(T))
             throw std::invalid_argument("flat_data_store: bad offset");
         return (T*)((char *)m_start + a_ptr);
