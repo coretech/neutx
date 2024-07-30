@@ -86,7 +86,7 @@ public:
     // traverse const trie
     template<dir_t D, typename Key, typename F>
     void foreach(F functor) const {
-        m_trie.foreach<D, Key, F>(functor);
+        m_trie.template foreach<D, Key, F>(functor);
     }
 
     // find a node exactly matching given key or closest left node at the
